@@ -12,11 +12,14 @@ class HomePage extends StatelessWidget {
     return Scaffold(
         body: CustomScrollView(
       slivers: [
-        CustomSliverAppBar(),
-        SliverList(
-          delegate: SliverChildBuilderDelegate(
-            (context, index) => VideoCard(video: videos[index]),
-            childCount: videos.length,
+       const CustomSliverAppBar(),
+        SliverPadding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          sliver: SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) => VideoCard(video: videos[index]),
+              childCount: videos.length,
+            ),
           ),
         ),
       ],
