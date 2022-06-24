@@ -1,3 +1,5 @@
+import 'dart:core';
+
 class User {
   final String username;
   final String profileImageUrl;
@@ -13,7 +15,7 @@ class User {
 const User currentUser = User(
   username: 'TestGuacuaTube',
   profileImageUrl:
-  'https://yt3.ggpht.com/ytc/AAUvwniE2k5PgFu9yr4sBVEs9jdpdILdMc7ruiPw59DpS0k=s88-c-k-c0x00ffffff-no-rj',
+      'https://yt3.ggpht.com/ytc/AAUvwniE2k5PgFu9yr4sBVEs9jdpdILdMc7ruiPw59DpS0k=s88-c-k-c0x00ffffff-no-rj',
   subscribers: '100K',
 );
 
@@ -21,7 +23,7 @@ class Video {
   final String id;
   final User author;
   final String title;
-  final String  thumbnailUrl;
+  final String thumbnailUrl;
   final String duration;
   final DateTime timestamp;
   final String viewCount;
@@ -57,7 +59,7 @@ final List<Video> videos = [
     author: currentUser,
     id: 'vrPk6LB9bjo',
     title:
-    'Build Flutter Apps Fast with Riverpod, Firebase, Hooks, and Freezed Architecture',
+        'Build Flutter Apps Fast with Riverpod, Firebase, Hooks, and Freezed Architecture',
     thumbnailUrl: 'https://i.ytimg.com/vi/vrPk6LB9bjo/0.jpg',
     duration: '22:06',
     timestamp: DateTime(2021, 2, 26),
@@ -113,3 +115,18 @@ final List<Video> suggestedVideos = [
     dislikes: '85',
   ),
 ];
+
+class Category {
+  final int id;
+  final String category_name;
+  final String created_At;
+  final String updated_At;
+
+  const Category(
+    this.category_name,
+    this.created_At,
+    this.updated_At, {
+    required this.id,
+  });
+
+}

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import '../data.dart';
+import 'package:http/http.dart' as http;
 
 class VideoInfo extends StatelessWidget {
   const VideoInfo({

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:guacatube/pages/nav_page.dart';
-
+import 'package:adaptive_theme/adaptive_theme.dart';
 void main() {
   runApp(ProviderScope(child: MyApp()));
 }

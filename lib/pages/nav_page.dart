@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:guacatube/pages/category_page.dart';
 import 'package:guacatube/pages/video_page.dart';
 import 'package:miniplayer/miniplayer.dart';
 
@@ -7,7 +8,8 @@ import '../data.dart';
 import 'home_page.dart';
 
 final selectVideoProvider = StateProvider<Video?>((ref) => null);
-final miniPlayerController = StateProvider.autoDispose<MiniplayerController>((ref) => MiniplayerController());
+final miniPlayerController = StateProvider.autoDispose<MiniplayerController>(
+    (ref) => MiniplayerController());
 
 class NavPage extends StatefulWidget {
   const NavPage({Key? key}) : super(key: key);
@@ -21,9 +23,9 @@ class _NavPageState extends State<NavPage> {
 
   final pages = [
     const HomePage(),
-    const Scaffold(body: Center(child: Text('Explore'))),
+    const CategoryPage(),
     const Scaffold(body: Center(child: Text('Liked'))),
-    const Scaffold(body: Center(child: Text('Account')))
+    const Scaffold(body: Center(child: Text('Account'))),
   ];
 
   @override
@@ -55,11 +57,9 @@ class _NavPageState extends State<NavPage> {
                         if (selectedVideo == null) {
                           return const SizedBox.shrink();
                         }
-                        if(height <= 190) {
+                        if (height <= 190) {
                           return Container(
-                            color: Theme
-                                .of(context)
-                                .scaffoldBackgroundColor,
+                            color: Theme.of(context).scaffoldBackgroundColor,
                             child: Column(
                               children: [
                                 Row(children: [
@@ -74,34 +74,33 @@ class _NavPageState extends State<NavPage> {
                                       padding: const EdgeInsets.all(8.0),
                                       child: Column(
                                         crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                            CrossAxisAlignment.start,
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Flexible(
                                             child: Text(
                                               selectedVideo.title,
                                               overflow: TextOverflow.ellipsis,
-                                              style: Theme
-                                                  .of(context)
+                                              style: Theme.of(context)
                                                   .textTheme
                                                   .caption!
                                                   .copyWith(
-                                                  color: Colors.white,
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w400),
+                                                      color: Colors.white,
+                                                      fontSize: 14,
+                                                      fontWeight:
+                                                          FontWeight.w400),
                                             ),
                                           ),
                                           Flexible(
                                             child: Text(
                                                 selectedVideo.author.username,
-                                                style: Theme
-                                                    .of(context)
+                                                style: Theme.of(context)
                                                     .textTheme
                                                     .caption!
                                                     .copyWith(
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                    FontWeight.w400)),
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.w400)),
                                           ),
                                         ],
                                       ),
@@ -111,17 +110,18 @@ class _NavPageState extends State<NavPage> {
                                     icon: Icon(Icons.play_arrow),
                                     onPressed: () {},
                                   ),
-                                  IconButton(icon:
-                                  Icon(Icons.close), onPressed: () {
-                                    context
-                                        .read(selectVideoProvider)
-                                        .state = null;
-                                  })
+                                  IconButton(
+                                      icon: Icon(Icons.close),
+                                      onPressed: () {
+                                        context
+                                            .read(selectVideoProvider)
+                                            .state = null;
+                                      })
                                 ]),
                                 const LinearProgressIndicator(
                                   value: 0.6,
                                   valueColor:
-                                  AlwaysStoppedAnimation<Color>(Colors.red),
+                                      AlwaysStoppedAnimation<Color>(Colors.red),
                                 )
                               ],
                             ),
@@ -147,7 +147,7 @@ class _NavPageState extends State<NavPage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.explore_off_outlined),
             activeIcon: Icon(Icons.explore),
-            label: 'Explore',
+            label: 'Category',
           ),
 
           // if isLogged can see liked and account
