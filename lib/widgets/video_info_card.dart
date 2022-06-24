@@ -31,7 +31,7 @@ class VideoInfo extends StatelessWidget {
           Divider(),
           _ActionsRow(video: video),
           Divider(),
-          _UserInfo(user: currentUser),
+          _UserInfo(user: currentUser, video: video),
         ],
       ),
     );
@@ -57,6 +57,7 @@ class _ActionsRow extends StatelessWidget {
   }
 
   Widget _buildAction(BuildContext context, IconData icon, String label) {
+
     return GestureDetector(
       onTap: () {},
       child: Column(
@@ -74,14 +75,20 @@ class _ActionsRow extends StatelessWidget {
 }
 
 class _UserInfo extends StatelessWidget {
-  const _UserInfo({Key? key, required this.user}) : super(key: key);
+  const _UserInfo({Key? key, required this.user, required this.video}) : super(key: key);
   final User user;
+final Video video;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print('navigate to user');
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(
+        //     builder: (context) => ProfilePage(user: user),
+        //   ),
+        // );
       },
       child: Row(children: [
         CircleAvatar(

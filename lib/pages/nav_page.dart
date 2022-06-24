@@ -19,7 +19,7 @@ class NavPage extends StatefulWidget {
 class _NavPageState extends State<NavPage> {
   int _currentIndex = 0;
 
-  final _pages = [
+  final pages = [
     const HomePage(),
     const Scaffold(body: Center(child: Text('Explore'))),
     const Scaffold(body: Center(child: Text('Liked'))),
@@ -34,7 +34,7 @@ class _NavPageState extends State<NavPage> {
           final selectedVideo = watch(selectVideoProvider).state;
           final miniplayerController = watch(miniPlayerController).state;
           return Stack(
-              children: _pages
+              children: pages
                   .asMap()
                   .map(
                     (index, page) => MapEntry(

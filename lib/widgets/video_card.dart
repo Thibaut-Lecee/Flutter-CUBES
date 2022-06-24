@@ -6,15 +6,20 @@ import '../pages/nav_page.dart'; // timeago.format(DateTime.now())
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class VideoCard extends StatelessWidget {
-  const VideoCard({Key? key, required this.video}) : super(key: key);
+  const VideoCard({Key? key, required this.video, this.onTap})
+      : super(key: key);
   final Video video;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         context.read(selectVideoProvider).state = video;
-        context.read(miniPlayerController).state.animateToHeight(state: PanelState.MAX);
+        context.read(miniPlayerController).state.animateToHeight(
+            state: PanelState.MAX,
+            duration: const Duration(milliseconds: 500));
+        if (onTap != null) onTap!();
       },
       child: Column(
         children: [
